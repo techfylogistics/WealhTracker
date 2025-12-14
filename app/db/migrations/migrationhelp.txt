@@ -1,0 +1,18 @@
+How Future Migrations Work
+Example: Add new column
+export const migration_003: Migration = {
+  version: 3,
+  name: 'add_item_tags',
+  up: `
+    ALTER TABLE item ADD COLUMN tags TEXT;
+  `,
+};
+
+
+Just:
+
+Add file
+
+Register it
+
+App updates safely

@@ -1,0 +1,45 @@
+SQLiteTransactionTypeRepository
+
+SQLiteMetadataRepository
+
+SQLiteDocumentRepository
+
+SQLiteContactRepository
+
+SQLiteCategoryQueryRepository
+----------
+for UI
+ImportProfileRepository
+
+ValuationPolicyRepository
+
+UIBehaviorRepository
+
+CategoryCapabilityRepository
+=========
+
+
+Generate a SQLite implementation for the following repository interface:
+
+export interface MetadataDefinition {
+  key: string;
+  label: string;
+  dataType: MetadataType;
+  applicableCategoryId: number | null;
+  isRequired: boolean;
+  displayOrder?: number;
+}
+Context:
+- SQLite database
+- expo-sqlite
+- Use async functions
+- Use helper functions: query() and execute()
+- No business logic
+- SQL must stay inside repository
+- Respect hierarchical categories where applicable
+- Follow the same coding style as SQLiteItemRepository and SQLiteTransactionQueryRepository
+
+Output:
+- TypeScript class named SQLite<interfacename>
+- Ready to copy-paste
+- No explanations, only code
