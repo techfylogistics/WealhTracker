@@ -21,7 +21,7 @@ export class SQLiteTransactionQueryRepository
         SUM(CASE WHEN tt.group_code = 'INVESTMENT' THEN ABS(t.amount) ELSE 0 END) AS invested,
         SUM(CASE WHEN tt.group_code = 'RETURN' THEN t.amount ELSE 0 END) AS returns,
         SUM(CASE WHEN tt.group_code = 'EXPENSE' THEN ABS(t.amount) ELSE 0 END) AS expenses
-      FROM transaction t
+      FROM transactions t
       JOIN transaction_type tt ON t.txn_type_code = tt.code
       WHERE t.item_id = ?
       `,
@@ -40,7 +40,7 @@ export class SQLiteTransactionQueryRepository
       SELECT
         SUM(CASE WHEN fn.networth_sign = 1 THEN t.amount ELSE 0 END) AS assets,
         SUM(CASE WHEN fn.networth_sign = -1 THEN t.amount ELSE 0 END) AS liabilities
-      FROM transaction t
+      FROM transactions t
       JOIN item i ON t.item_id = i.id
       JOIN category c ON i.category_id = c.id
       JOIN financial_nature fn ON c.nature_code = fn.code
@@ -90,7 +90,7 @@ export class SQLiteTransactionQueryRepository
       `
       SELECT t.txn_date AS date,
              SUM(t.amount * fn.networth_sign) AS value
-      FROM transaction t
+      FROM transactions t
       JOIN item i ON t.item_id = i.id
       JOIN category c ON i.category_id = c.id
       JOIN financial_nature fn ON c.nature_code = fn.code
@@ -106,7 +106,7 @@ export class SQLiteTransactionQueryRepository
     const rows = await query<{ sum: number }>(
       `
       SELECT SUM(t.amount) AS sum
-      FROM transaction t
+      FROM transactions t
       JOIN transaction_type tt ON t.txn_type_code = tt.code
       WHERE t.item_id = ? AND tt.group_code = ?
       `,
@@ -124,7 +124,7 @@ export class SQLiteTransactionQueryRepository
         SELECT c.id FROM category c JOIN cats ON c.parent_id = cats.id
       )
       SELECT SUM(t.amount) AS sum
-      FROM transaction t
+      FROM transactions t
       JOIN item i ON t.item_id = i.id
       JOIN cats ON i.category_id = cats.id
       JOIN transaction_type tt ON t.txn_type_code = tt.code

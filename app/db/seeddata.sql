@@ -81,25 +81,25 @@ INSERT OR IGNORE INTO transaction_type VALUES
 ('EMI','Loan EMI',1,0,1,1,1,'EXPENSE'),
 ('VALUATION','Market Valuation',0,0,0,0,1,'VALUATION');
 -- Real Estate purchase
-INSERT OR IGNORE INTO transaction (item_id, txn_date, amount, txn_type_code)
+INSERT OR IGNORE INTO transactions (item_id, txn_date, amount, txn_type_code)
 VALUES
 (100,'2018-06-10',-8500000,'BUY');
 
 -- Stock investments
-INSERT OR IGNORE INTO transaction VALUES
+INSERT OR IGNORE INTO transactions VALUES
 (NULL,101,'2020-01-15',-500000,'BUY','Initial investment'),
 (NULL,101,'2023-12-31',120000,'INTEREST','Dividends');
 
 -- Gold purchase
-INSERT OR IGNORE INTO transaction VALUES
+INSERT OR IGNORE INTO transactions VALUES
 (NULL,102,'2019-05-20',-600000,'BUY','Gold purchase');
 
 -- FD interest
-INSERT OR IGNORE INTO transaction VALUES
+INSERT OR IGNORE INTO transactions VALUES
 (NULL,103,'2024-03-31',45000,'INTEREST','FD yearly interest');
 
 -- Loan EMI
-INSERT OR IGNORE INTO transaction VALUES
+INSERT OR IGNORE INTO transactions VALUES
 (NULL,200,'2024-01-05',-45000,'EMI','Home loan EMI');
 INSERT OR REPLACE INTO item_current_value VALUES
 (100,12000000,'2024-12-01'),

@@ -1,44 +1,37 @@
-import * as SQLite from 'expo-sqlite';
+import { getDb } from './sqlite';
 import { migrations } from './migrations';
 
-const db = SQLite.openDatabase('wealthtracker.db');
+export async function runMigrations() {
+  const db = await getDb();
 
-export function runMigrations() {
-  db.transaction(tx => {
-    // Ensure migration table
-    tx.executeSql(`
-      CREATE TABLE IF NOT EXISTS schema_migrations (
-        version INTEGER PRIMARY KEY,
-        name TEXT NOT NULL,
-        applied_at DATE DEFAULT CURRENT_DATE
-      );
-    `);
-
-    // Fetch applied migrations
-    tx.executeSql(
-      `SELECT version FROM schema_migrations`,
-      [],
-      (_, result) => {
-        const applied = new Set<number>();
-        for (let i = 0; i < result.rows.length; i++) {
-          applied.add(result.rows.item(i).version);
-        }
-
-        // Apply pending migrations
-        migrations.forEach(migration => {
-          if (applied.has(migration.version)) return;
-
-          console.log(`⬆ Applying migration ${migration.version}: ${migration.name}`);
-
-          tx.executeSql(migration.up);
-
-          tx.executeSql(
-            `INSERT INTO schema_migrations (version, name)
-             VALUES (?, ?)`,
-            [migration.version, migration.name]
-          );
-        });
-      }
+  // 1. Ensure migration table
+  await db.execAsync(`
+    CREATE TABLE IF NOT EXISTS schema_migrations (
+      version INTEGER PRIMARY KEY,
+      name TEXT NOT NULL,
+      applied_at DATE DEFAULT CURRENT_DATE
     );
-  });
+  `);
+
+  // 2. Get applied migrations
+const rows = (await db.getAllAsync(
+  `SELECT version FROM schema_migrations;`
+)) as { version: number }[];
+
+  const applied = new Set(rows.map(r => r.version));
+
+  // 3. Apply pending migrations
+  for (const migration of migrations) {
+    if (applied.has(migration.version)) continue;
+
+    console.log(`⬆ Applying migration ${migration.version}: ${migration.name}`);
+
+    await db.execAsync(migration.up);
+
+    await db.runAsync(
+      `INSERT INTO schema_migrations (version, name)
+       VALUES (?, ?)`,
+      [migration.version, migration.name]
+    );
+  }
 }

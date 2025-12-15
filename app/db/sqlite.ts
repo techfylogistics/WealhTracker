@@ -1,61 +1,45 @@
+import * as SQLite from 'expo-sqlite';
 import { Platform } from 'react-native';
 
-let SQLite: any;
+let db: SQLite.SQLiteDatabase | null = null;
 
-if (Platform.OS !== 'web') {
-  SQLite = require('expo-sqlite');
+/**
+ * Get (or create) the SQLite database instance
+ */
+export async function getDb(): Promise<SQLite.SQLiteDatabase> {
+  if (Platform.OS === 'web') {
+    throw new Error('SQLite is not supported on web');
+  }
+
+  if (!db) {
+    db = await SQLite.openDatabaseAsync('wealthtracker.db');
+  }
+
+  return db;
 }
 
-let db: any = null;
-
-if (Platform.OS !== 'web') {
-  db = SQLite.openDatabase('wealthtracker.db');
-}
-
-export function execute(
+/**
+ * Execute a SQL statement (CREATE / INSERT / UPDATE / DELETE)
+ */
+export async function execute(
   sql: string,
   params: any[] = []
 ): Promise<void> {
-  if (Platform.OS === 'web') {
-    return Promise.resolve();
-  }
+  if (Platform.OS === 'web') return;
 
-  return new Promise((resolve, reject) => {
-    db.transaction((tx: any) => {
-      tx.executeSql(
-        sql,
-        params,
-        () => resolve(),
-        (_: any, error: any) => {
-          reject(error);
-          return false;
-        }
-      );
-    });
-  });
+  const database = await getDb();
+  await database.runAsync(sql, params);
 }
 
-export function query<T>(
+/**
+ * Query rows from SQLite
+ */
+export async function query<T = any>(
   sql: string,
   params: any[] = []
 ): Promise<T[]> {
-  if (Platform.OS === 'web') {
-    return Promise.resolve([]);
-  }
+  if (Platform.OS === 'web') return [];
 
-  return new Promise((resolve, reject) => {
-    db.transaction((tx: any) => {
-      tx.executeSql(
-        sql,
-        params,
-        (_: any, result: any) => {
-          resolve(result.rows._array as T[]);
-        },
-        (_: any, error: any) => {
-          reject(error);
-          return false;
-        }
-      );
-    });
-  });
+  const database = await getDb();
+  return (await database.getAllAsync(sql, params)) as T[];
 }

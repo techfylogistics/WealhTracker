@@ -11,10 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetExts": [
-      "sql",
-      "txt"
-    ],
+
     "assetBundlePatterns": [
       "**/*"
     ],

@@ -16,6 +16,7 @@ export function SmokeTestScreen() {
 
     async function runTests() {
       try {
+        console.log("in smoke test screen");
         const snapshotDate = new Date().toISOString().slice(0, 10);
 
         const lines: string[] = [];

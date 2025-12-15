@@ -1,4 +1,4 @@
-PRAGMA foreign_keys = ON;
+export const wealthtrackerSchema = `
 
 ------------------------------------------------------------------
 -- 1. FINANCIAL NATURE
@@ -177,7 +177,7 @@ CREATE TABLE  IF NOT EXISTS  transaction_type (
 -- 10. TRANSACTIONS
 ------------------------------------------------------------------
 
-CREATE TABLE  IF NOT EXISTS  transaction (
+CREATE TABLE  IF NOT EXISTS  transactions (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     item_id INTEGER NOT NULL,
     txn_date DATE NOT NULL,
@@ -188,11 +188,10 @@ CREATE TABLE  IF NOT EXISTS  transaction (
     FOREIGN KEY (txn_type_code) REFERENCES transaction_type(code)
 );
 
-CREATE INDEX IF NOT EXISTS   idx_txn_item_date
-    ON transaction(item_id, txn_date);
+CREATE INDEX IF NOT EXISTS   idx_txn_item_date ON transactions(item_id, txn_date);
 
-CREATE INDEX IF NOT EXISTS   idx_txn_type_date
-    ON transaction(txn_type_code, txn_date);
+CREATE INDEX IF NOT EXISTS   idx_txn_type_date ON transactions(txn_type_code, txn_date);
+
 
 ------------------------------------------------------------------
 -- 11. VALUATION POLICY (INHERITABLE)
@@ -292,3 +291,4 @@ CREATE TABLE IF NOT EXISTS   schema_migrations (
   name TEXT NOT NULL,
   applied_at DATE DEFAULT CURRENT_DATE
 );
+`;

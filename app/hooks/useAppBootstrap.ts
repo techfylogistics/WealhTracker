@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
+import { seedDatabaseIfNeeded } from './../db/seed';
 
 import { initializeDatabase } from '@/db/schema';
 import { snapshotRefreshService } from '@/core/container';
@@ -16,7 +17,8 @@ export function useAppBootstrap() {
         // 🟢 Mobile platforms: real SQLite
         if (Platform.OS !== 'web') {
           await initializeDatabase();
-          await snapshotRefreshService.refreshAll();
+          await seedDatabaseIfNeeded();
+          // await snapshotRefreshService.refreshAll();
         }
 
         // 🌐 Web: skip DB + background computation

@@ -13,7 +13,7 @@ export class SQLiteBackgroundComputationRepository
         SUM(CASE WHEN tt.group_code = 'RETURN' THEN t.amount ELSE 0 END),
         SUM(CASE WHEN tt.group_code = 'EXPENSE' THEN ABS(t.amount) ELSE 0 END),
         SUM(t.amount)
-      FROM transaction t
+      FROM transactions t
       JOIN transaction_type tt ON t.txn_type_code = tt.code
       GROUP BY t.item_id
     `);
@@ -27,7 +27,7 @@ export class SQLiteBackgroundComputationRepository
         SUM(CASE WHEN fn.networth_sign = 1 THEN t.amount ELSE 0 END),
         SUM(CASE WHEN fn.networth_sign = -1 THEN t.amount ELSE 0 END),
         SUM(t.amount * fn.networth_sign)
-      FROM transaction t
+      FROM transactions t
       JOIN item i ON t.item_id = i.id
       JOIN category c ON i.category_id = c.id
       JOIN financial_nature fn ON c.nature_code = fn.code
