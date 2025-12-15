@@ -4,7 +4,8 @@ import { View, Text, ScrollView, StyleSheet, Platform } from 'react-native';
 import {
   categoryHierarchyService,
   financialSummaryService,
-  netWorthService
+  netWorthService,
+  snapshotRefreshService
 } from '@/core/container';
 
 export function SmokeTestScreen() {
@@ -31,13 +32,19 @@ export function SmokeTestScreen() {
         const leaves = await categoryHierarchyService.getLeafCategoryIds();
         lines.push(`Leaf categories: ${leaves.length}`);
 
-        // 3️⃣ Net worth
-        const netWorth = await netWorthService.getOverallNetWorth(snapshotDate);
-        lines.push(`Net worth value: ${netWorth.value}`);
+        // 3️⃣ Net worth, before that we need to compute summaries and agregates so calling snapshot service
+        await snapshotRefreshService.refreshAll();
+
+        const netWorth:any = await netWorthService.getLatest();
+        lines.push(`Net worth value: ${netWorth.networth}`);
+        const networkOnDate = await netWorthService.getOverallNetWorth(snapshotDate);
+        lines.push(`Net worth value on today: ${networkOnDate.value}`);
 
         // 4️⃣ Per-category net worth
         const categoryNW = await netWorthService.getCategoryNetWorth(snapshotDate);
         lines.push(`Category net worth entries: ${categoryNW.length}`);
+        lines.push(`Category net worth first category: ${categoryNW[0].categoryId}`);
+        lines.push(`Category net worth first category value: ${categoryNW[0].value}`);
 
         // 5️⃣ Financial summary (safe even if empty)
         // const summary = await financialSummaryService.getOverallSummary();

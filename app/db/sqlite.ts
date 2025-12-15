@@ -28,6 +28,7 @@ export async function execute(
   if (Platform.OS === 'web') return;
 
   const database = await getDb();
+  console.log("executing following sql,params",sql,params);
   await database.runAsync(sql, params);
 }
 

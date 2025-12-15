@@ -26,7 +26,7 @@ export async function initializeDatabase(): Promise<void> {
   //   .filter(s => s.length > 0);
 
   for (const stmt of statements) {
-      console.log("sql statement",stmt);
+      // console.log("sql statement",stmt);
     await execute(stmt);
   }
 }

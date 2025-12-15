@@ -4,12 +4,22 @@ import { query, execute } from '../../db/sqlite';
 export class SQLiteCacheQueryRepository implements CacheQueryRepository {
 
   async getLatestNetworth() {
+    console.log("in getLatestNetworth in repo ")
     const rows = await query<any>(
       `SELECT * FROM networth_snapshot ORDER BY snapshot_date DESC LIMIT 1`
     );
+        console.log("in getLatestNetworth in repo, rows returned ", rows[0]);
+
     return rows[0] ?? null;
   }
-
+  async getNetworthSnapshot(date: string) {
+    return query<{ value: number }>(
+      `SELECT category_id AS categoryId, value
+       FROM category_networth_snapshot
+       WHERE snapshot_date = ?`,
+      [date]
+    );
+  }
   async getCategorySnapshot(date: string) {
     return query<{ categoryId: number; value: number }>(
       `SELECT category_id AS categoryId, value

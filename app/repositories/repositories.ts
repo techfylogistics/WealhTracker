@@ -238,6 +238,9 @@ export interface CacheQueryRepository {
     categoryId: number;
     value: number;
   }>>
+  getNetworthSnapshot(date: string): Promise<Array<{
+    value: number;
+  }>>
 
   getItemSummary(itemId: number): Promise<{
     invested: number;

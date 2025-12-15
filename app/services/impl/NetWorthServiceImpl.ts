@@ -25,7 +25,7 @@ export class NetWorthServiceImpl
     if (cached) {
       return cached;
     }
-
+    console.log("no networth in cashed so calculating now");
     const totals = await this.txnQueryRepo.sumForNetworth();
 
     return {
@@ -62,7 +62,7 @@ export class NetWorthServiceImpl
 
   async getOverallNetWorth(snapshotDate: string) {
     const rows =
-      await this.categoryQueryRepo.getCategoryNetworthSnapshot(
+      await this.cacheRepo.getNetworthSnapshot(
         snapshotDate
       );
 

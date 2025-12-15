@@ -18,7 +18,7 @@ export function useAppBootstrap() {
         if (Platform.OS !== 'web') {
           await initializeDatabase();
           await seedDatabaseIfNeeded();
-          // await snapshotRefreshService.refreshAll();
+          await snapshotRefreshService.refreshAll();
         }
 
         // 🌐 Web: skip DB + background computation
