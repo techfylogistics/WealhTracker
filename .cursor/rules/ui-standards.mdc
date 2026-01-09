@@ -1,0 +1,26 @@
+---
+description: UI and UX standards
+globs: "app/**"
+alwaysApply: true
+---
+
+## UI Rules
+- Use NativeWind only
+- No StyleSheet unless animation/perf critical
+- No hardcoded text → use i18n
+- Use lucide-react-native for icons
+
+## UX Rules
+- Designed for non-technical users
+- Prefer clarity over density
+- Dashboard = summary first, drill-down later
+
+## Charts
+- All charts must use ChartContainer
+- Handle loading, empty, error states
+##UX coding Rules
+- Hooks must expose stable, descriptive state names.
+- UI must not rename hook return values unless absolutely necessary.
+- Screens MUST NOT import services or container.ts.
+- Screens MUST use hooks for all business interactions.
+- Hooks are the only UI-adjacent layer allowed to access services.

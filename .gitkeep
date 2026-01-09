@@ -1,1 +1,4 @@
 for /r app %i in (.) do echo. > "%i\.gitkeep"
+for /r src %i in (.) do echo. > "%i\.gitkeep"
+for /r tests %i in (.) do echo. > "%i\.gitkeep"
+for /r docs %i in (.) do echo. > "%i\.gitkeep"

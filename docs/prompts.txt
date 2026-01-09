@@ -1,0 +1,3 @@
+Build the Dashboard screen using existing UI components.
+Create/use `useNetWorth` hook to fetch data from netWorthService.
+Do not import services or container directly in the screen.

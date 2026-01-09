@@ -1,0 +1,21 @@
+# Service & Repository Contract Rules
+
+## Services (`src/domain/services/index.ts`)
+- This file may contain ONLY:
+  - interface definitions
+  - type aliases
+- It MAY import:
+  - domain models
+- It MUST NOT contain:
+  - class implementations
+  - logic
+  - instantiation
+  - imports from `src/services/impl` or `container.ts`
+
+## Repositories (`src/repositories/index.ts`)
+- This file may contain ONLY:
+  - repository interfaces
+- It MUST NOT:
+  - import concrete implementations
+  - import database clients
+  - perform queries

@@ -1,0 +1,23 @@
+---
+description: Data access, validation, and data-handling rules
+globs: "**/*"
+alwaysApply: true
+---
+
+## Data Access Rules
+- UI (screens and components) MUST NOT use fetch, axios, or database APIs directly.
+- Data access must be performed via services exposed through hooks.
+- Services may access repositories; repositories may access the database.
+- Services and repositories must be instantiated ONLY in `src/container.ts`.
+
+## Validation
+- Use Zod for all user-input validation.
+- Validate inputs before invoking service methods.
+
+## Storage
+- Sensitive data MUST be stored using `expo-secure-store`.
+- Application data MUST be stored in local SQLite only.
+
+## Logging
+- Do NOT use `console.log`.
+- Use the centralized logger from `@/utils/logger`.

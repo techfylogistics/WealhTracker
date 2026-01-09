@@ -1,0 +1,20 @@
+---
+description: Performance, resilience, and quality rules
+globs: "**/*"
+alwaysApply: true
+---
+
+## UI Performance
+- Long or virtualized lists MUST use FlashList.
+- Components rendering large datasets or complex charts MUST be memoized.
+- Avoid unnecessary re-renders by using stable props and keys.
+
+## Error Handling
+- Application MUST have a top-level ErrorBoundary (root layout).
+- Feature-level ErrorBoundaries MAY be used for critical flows.
+- All screens MUST handle empty, loading, and error states gracefully.
+
+## Network & Offline
+- Offline state MUST be detected using NetInfo.
+- Offline handling logic SHOULD live in hooks or global providers, not directly in screens.
+- UI MUST show a clear offline indicator when connectivity is lost.

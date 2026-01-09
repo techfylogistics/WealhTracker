@@ -1,0 +1,14 @@
+Command	When to use
+npx expo prebuild	Once / rarely
+npx expo run:android	First install or native changes
+npx expo start --dev-client	Daily development ⭐
+npx expo-doctor
+adb devices
+ npx tsc --noEmit 
+
+ rmdir /s /q android\.gradle
+rmdir /s /q android\app\.cxx
+rmdir /s /q android\build
+
+
+ C:\dev\projects\wealthtracker\android>gradlew clean (clean build)

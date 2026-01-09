@@ -1,0 +1,24 @@
+---
+description: Multi-theme enforcement
+globs: "**/*"
+alwaysApply: true
+---
+
+## Themes Seelctable buy users
+Supported:
+- Light
+- Dark
+- Blue (Corporate)
+- Pink
+
+## Rules
+- NO hex colors
+- NO text-blue-500 etc.
+- ONLY semantic classes: text-primary, bg-card, border-accent
+
+## Source of Truth
+- app/ui/theme/themes.ts → vars()
+- tailwind.config.js → var(--color-*)
+
+## Charts
+- Chart colors must come from theme context

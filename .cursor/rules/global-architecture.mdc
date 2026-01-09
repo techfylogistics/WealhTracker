@@ -1,0 +1,53 @@
+---
+description: Global architecture rules for Expo hybrid finance app
+globs: "**/*"
+alwaysApply: true
+---
+
+## Tech Stack
+- React Native Expo Router (TypeScript)
+- Navigation: Expo Router (File-based)
+- Styling: NativeWind (Tailwind CSS)
+
+## UI Composition
+- Atomic Design:
+  - components/ui → atomic UI primitives
+  - components/features → composed UI blocks
+  - app/ → screens (via Expo Router)
+
+## Core Principles
+- Cross-Platform: Always ensure UI works on both Android and iOS.
+- Screens are orchestration layers only.
+- No monolithic components.
+- Offline-first (SQLite / local storage).
+- Business identifiers and invariants must live in `src/domain/constants`.
+- Generic `constants.ts` is not allowed.
+
+## File Size Rule
+- >150 lines → extract to features/
+
+## Global Architecture Rules (Non-Negotiable)
+
+- The `app/` folder MUST contain only routes and screen components.
+- No business logic, services, repositories, hooks, or utils may be created inside `app/`.
+
+- Domain models MUST live in `src/domain/models`.
+- Domain service interfaces MUST live in `src/domain/services`.
+
+- Service and repository IMPLEMENTATIONS must live ONLY in:
+  - `src/services/impl`
+  - `src/repositories/*`
+
+- The file `src/container.ts` is the ONLY composition root.
+  - Only `container.ts` may instantiate services or repositories.
+  - No other file may use `new Service()` or `new Repository()`.
+
+- `container.ts` MUST NOT be imported by:
+  - service implementations
+  - repository implementations
+  - domain models
+
+- Respect dependency direction (imports): db ← repositories ← services ← domain.
+- Respect runtime flow (execution-time): UI/hooks → container → services → repositories → db.
+
+- Major architectural work must be tracked in docs/todo.md using checklists.

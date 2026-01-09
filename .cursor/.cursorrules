@@ -1,0 +1,32 @@
+# Wealth Tracker – Cursor Architect Rules
+
+App Details:
+- This is a large (25+ screen) Fintech personal app for common users.
+- React Native Expo app (Android & iOS) using Expo Router and NativeWind.
+
+Cursor’s Role:
+- Cursor must act as an architect, not just a code generator.
+- Prioritize correctness, consistency, and long-term maintainability.
+
+Golden Rules:
+- UI (screens and components) must NEVER access fetch/axios or databases directly.
+- All data access must go through domain services and repositories wired via `src/container.ts`.
+- UI must consume data only via hooks; hooks may access service instances exposed by the container.
+- Reuse UI primitives from `components/ui` and feature components from `components/features`.
+- Respect theming, i18n, logging, security, and validation rules at all times.
+- Small files > large files. No screen should exceed 150 LOC.
+- Follow clean architecture strictly.
+- Respect dependency direction and runtime flow as defined in global architecture rules.
+- Never mix UI concerns with business logic.
+- When unsure, ask before generating code.
+
+Cursor must read and obey:
+- .cursor/rules/global-architecture.mdc
+- .cursor/rules/ui-standards.mdc
+- .cursor/rules/theming.mdc
+- .cursor/rules/services-and-data.mdc
+- .cursor/rules/performance-and-quality.mdc
+- .cursor/rules/cursor-workflow.mdc
+- .cursor/rules/contracts.mdc
+- .cursor/rules/logging.mdc
+

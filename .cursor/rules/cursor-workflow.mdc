@@ -1,0 +1,19 @@
+---
+description: How Cursor should generate code
+globs: "**/*"
+alwaysApply: true
+---
+
+## Mandatory Generation Flow
+1. Analyze mockups for shared UI
+2. Check /components/ui before creating anything new
+3. Build feature blocks
+4. Wire to services
+5. Apply theme, i18n, logging, validation, security
+6. Self-check for violations
+
+## Forbidden
+- Duplicate UI atoms
+- Hardcoded strings
+- Hardcoded colors
+- Inline fetch calls

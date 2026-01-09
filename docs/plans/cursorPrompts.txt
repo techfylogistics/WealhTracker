@@ -1,0 +1,118 @@
+1. “Index the entire project including /src/services, /components/ui, and /theme.
+Confirm when indexing is complete.”
+----------------------------------------
+2. Create complete multi-theme infrastructure for this Expo + NativeWind app.
+
+Requirements:
+- Themes: Light, Dark, Blue (corporate), Pink
+- Use NativeWind vars() API
+- Define semantic tokens only (no hex usage in components)
+- Themes must live in /theme/themes.ts
+- Create a ThemeProvider that applies the active theme at root
+- Update tailwind.config.js to map Tailwind colors to CSS variables
+- Ensure compatibility with Expo Router
+- Do NOT create UI components or screens yet
+
+Return:
+1. /theme/themes.ts
+2. ThemeProvider implementation
+3. Updated tailwind.config.js
+4. Example usage snippet (minimal)
+--------------------
+3.Confirm and enforce:
+- No hex colors allowed in UI
+- No Tailwind palette colors (blue-500, etc.)
+- Only semantic tokens may be used
+Acknowledge compliance.
+---------------------------------
+then you verify manually following to see if cursor developed it properly
+
+What Cursor SHOULD Produce (Checklist)
+
+Cursor’s output should include all of these:
+
+✅ /theme/themes.ts
+
+vars() usage
+
+Semantic tokens like:
+
+--color-primary
+
+--color-background
+
+--color-card
+
+--color-text-primary
+
+--color-border
+
+No component styling here — tokens only.
+
+✅ ThemeProvider
+
+Wraps Expo root layout
+
+Uses state or context
+
+Applies style={themes[currentTheme]} on root <View>
+
+✅ tailwind.config.js
+
+Mapped like:
+
+colors: {
+  primary: 'var(--color-primary)',
+  background: 'var(--color-background)',
+  card: 'var(--color-card)',
+  text: {
+    primary: 'var(--color-text-primary)',
+    secondary: 'var(--color-text-secondary)',
+  },
+}
+
+
+⚠️ If you see hex colors here → reject and regenerate
+
+✅ Minimal usage example
+
+Something like:
+
+<View className="bg-background">
+  <Text className="text-primary">Hello</Text>
+</View>
+
+
+This confirms the pipeline works.
+----------------------------------------------------------------------
+ONLY AFTER this move MOVE to Generating primitives
+
+
+
+
+
+
+Then:
+
+“Based on .cursorrules and these 3 dashboard mockups, create reusable UI primitives in /components/ui for cards, headers, metric tiles, and chart wrappers.”
+
+---------------------------------
+For Each Screen
+
+Use this exact format:
+
+“Build Dashboard Net Worth Screen using attached mockup.
+Reuse components from /components/ui.
+Use data from useNetWorthBreakdown() in /src/services.
+Apply theme variables, i18n, logging, and validation.”
+
+
+---------------------------------
+
+Generate a starter /components/ui kit (Card, MetricTile, Section, ChartContainer)
+
+Create a Cursor prompt checklist for every new screen
+
+Map user journeys → screen list for your app
+
+Review your existing UI code and refactor it to fully comply

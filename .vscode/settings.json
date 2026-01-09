@@ -1,3 +1,29 @@
 {
-    "typescript.tsdk": "node_modules\\typescript\\lib"
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.jdt.ls.java.home": "c:\\dev\\devtools\\java\\java17",
+    "java.configuration.runtimes": [],
+    "java.test.config": {}
+}
+{
+  "eslint.enable": true,
+
+  // REQUIRED for ESLint v9+ (flat config)
+  "eslint.useFlatConfig": true,
+
+  // Tell ESLint which file types to lint
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  // Auto-fix ESLint issues on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  // Optional: show ESLint status in status bar
+  "eslint.alwaysShowStatus": true
 }

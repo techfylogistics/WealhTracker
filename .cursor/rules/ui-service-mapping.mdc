@@ -1,0 +1,45 @@
+## UI → Service Wiring Rules
+
+### General
+- UI components and screens MUST NOT import services directly.
+- UI components MUST NOT import `container.ts`.
+- UI components MUST interact with business logic ONLY via hooks.
+### Composition Hooks
+- Screens may use composition hooks that orchestrate multiple services.
+- Composition hooks MUST live in `src/hooks`.
+- Composition hooks MUST NOT contain business rules.
+- Composition hooks are allowed to call multiple services in parallel.
+- Composition hooks MUST NOT create new domain services.
+
+### Hooks
+- Hooks are the ONLY layer allowed to import services from `src/container.ts`.
+- Hooks may compose multiple service calls but MUST NOT contain business rules.
+- Hooks that import services MUST live in `src/hooks`.
+- Feature hooks map to a single domain capability.
+- Screen hooks may compose multiple feature hooks or services.
+- Screen hooks MUST NOT contain business logic.
+- UI screens MUST NOT orchestrate services directly.
+- Screen hooks must be screen-specific and not reused arbitrarily.
+- Hooks must not use inheritance or base hooks.
+- Shared hook behavior must be extracted into reusable helper hooks or plain utilities.
+- Feature hooks should remain thin and explicit.
+
+### Mapping Convention
+- Each screen MUST use one or more feature hooks.
+
+### Naming Conventions
+- Hook name MUST reflect the service intent:
+  - `useNetWorth` → `netWorthService`
+  - `useXirrRefresh` → `xirrRefreshService`
+  - `useCategoryHierarchy` → `categoryHierarchyService`
+
+### Examples
+- Portfolio / Dashboard screens → NetWorthService
+- Refresh / Background jobs → SnapshotRefreshService, XirrRefreshService
+- Semantic mapping → TransactionSemanticService
+- Category trees → CategoryHierarchyService
+
+### Forbidden
+- UI MUST NOT call service methods inline.
+- UI MUST NOT perform data transformations.
+- UI MUST NOT orchestrate multiple services directly.

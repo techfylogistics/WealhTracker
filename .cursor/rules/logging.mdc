@@ -1,0 +1,36 @@
+## Logging Rules (Non-Negotiable)
+
+### General
+- Services MUST NOT contain any logging statements.
+- Repositories MUST NOT contain logging statements.
+- UI components and hooks MUST NOT log business events.
+
+
+### Service Logging
+- All service entry, exit, and error logging MUST be applied via container-level logger proxies.
+- `loggerProxy` MUST be used only in `src/container.ts`.
+- Cursor MUST reuse the existing `loggerProxy` and MUST NOT introduce new logging patterns.
+
+### Central Logger
+- All logging MUST go through the centralized logger (`logger.ts`).
+- Logging destinations (local file, remote/Sentry, disabled) MUST be controlled centrally in `logger.ts`.
+- Cursor MUST NOT introduce direct file logging or Sentry calls outside the logger.
+
+### Local File Logging
+- Local file logging is allowed ONLY via:
+  `logger.ts → localFileLogger.ts → src/platform/fileSystem.ts`
+- Expo FileSystem APIs MUST ONLY be used inside `src/platform/fileSystem.ts`.
+- All other layers MUST use the platform fileSystem abstraction.
+
+### Log Export
+- Log export MUST be triggered only by explicit user action (e.g., Settings screen).
+- Cursor MUST NOT introduce automatic or background log uploads.
+- Log export MUST use `exportLogsForSupport`.
+- Log export MUST include device and app metadata using `getDeviceAndAppInfo`.
+- Metadata collection MUST NOT include user identifiers or PII.
+- Log export MUST NOT read database files directly.
+- Log export MUST use the platform fileSystem abstraction only.
+
+### Data Safety
+- Sensitive fields MUST NEVER appear in logs.
+- All logged payloads MUST respect allowlists and masking rules.
