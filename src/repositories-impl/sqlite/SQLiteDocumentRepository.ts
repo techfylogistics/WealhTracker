@@ -1,6 +1,6 @@
-import { DocumentRepository } from '@/domain/repositories/repositories-index';
+import { DocumentRepository } from '@/src/domain/repositories/repositories-index';
 import { query, execute } from '../../db/sqlite';
-import { ItemDocument } from '@/domain/models/models-index';
+import { ItemDocument } from '@/src/domain/models/models-index';
 export class SQLiteDocumentRepository implements DocumentRepository {
 
   async add(

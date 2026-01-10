@@ -1,5 +1,5 @@
-import { useAsyncRunner } from "@/ui/hooks/utils/useAsyncRunner";
-import { dashboardUiService } from "@/container";
+import { useAsyncRunner } from "@/src/us/hooks/utils/useAsyncRunner";
+import { dashboardUiService } from "@/src/container";
 
 export function useDashboard() {
   const state = useAsyncRunner(

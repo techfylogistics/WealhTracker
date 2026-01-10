@@ -20,4 +20,4 @@ alwaysApply: true
 
 ## Logging
 - Do NOT use `console.log`.
-- Use the centralized logger from `@/utils/logger`.
+- Use the centralized logger from `@/src/utils/logger`.

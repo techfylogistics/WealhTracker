@@ -1,7 +1,14 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+        "module": "ESNext",
+
+        "resolveJsonModule": true,
+    "moduleResolution": "bundler",
+
     "strict": true,
+        "noEmit": true,
+
     "paths": {
       "@/*": [
         "./*"

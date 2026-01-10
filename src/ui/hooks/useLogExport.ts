@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { exportLogsForSupport } from '@/utils/logExport'
+import { exportLogsForSupport } from '@/src/utils/logExport'
 
 export function useLogExport() {
   const [isExporting, setIsExporting] = useState(false)

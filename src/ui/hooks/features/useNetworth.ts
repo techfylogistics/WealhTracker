@@ -1,4 +1,4 @@
-import { netWorthService } from '@/container'
+import { netWorthService } from '@/src/container'
 import { useAsyncRunner } from '../utils/useAsyncRunner'
 // TODO these are not used so we may remove these later
 export function useNetWorth() {

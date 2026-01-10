@@ -4,7 +4,7 @@ import type {
   ItemService,
   TransactionService
 
-} from "@/domain/services/services-index";
+} from "@/src/domain/services/services-index";
 
 import type {
   AssetCategoryDetailViewModel,
@@ -12,8 +12,8 @@ import type {
   AssetCardVM,
   CategoryTransactionVM,
   CategoryTrendPointVM,
-} from "@/ui/view-models/category";
-import { categoryHierarchyService } from "@/container";
+} from "@/src/us/view-models/category";
+import { categoryHierarchyService } from "@/src/container";
 
 type CacheEntry<V> = {
   expiresAt: number;

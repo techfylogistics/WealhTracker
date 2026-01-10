@@ -1,6 +1,6 @@
 import { ContactRepository } from '../../domain/repositories/repositories-index';
 import { query, execute } from '../../db/sqlite';
-import { Contact } from '@/domain/models/models-index';
+import { Contact } from '@/src/domain/models/models-index';
 
 export class SQLiteContactRepository implements ContactRepository {
 

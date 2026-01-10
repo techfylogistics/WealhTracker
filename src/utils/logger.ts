@@ -5,7 +5,7 @@
 
 import { getTraceId } from './traceContext'
 // import * as Sentry from 'sentry-expo'
-import { loggingConfig } from '@/config/loggingConfig'
+import { loggingConfig } from '@/src/config/loggingConfig'
 import { appendLogToFile } from './localFileLogger'
 
 /* =========================================================

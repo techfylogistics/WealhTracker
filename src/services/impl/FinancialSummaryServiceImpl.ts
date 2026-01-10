@@ -1,11 +1,11 @@
 // import {
 //     FinancialSummary
 // } from '../../view-models/viewmodels';
-import { FinancialSummary } from '@//query-models/NetworthView';
+import { FinancialSummary } from '@/src/query-models/NetworthView';
 import {
   TransactionQueryRepository
 } from '../../domain/repositories/repositories-index';
-import { FinancialSummaryService } from '@/domain/services/services-index';
+import { FinancialSummaryService } from '@/src/domain/services/services-index';
 
 export class FinancialSummaryServiceImpl
   implements FinancialSummaryService {

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAsyncRunner } from "@/ui/hooks/utils/useAsyncRunner";
-import { assetCategoryDetailUiService } from "@/container";
+import { useAsyncRunner } from "@/src/us/hooks/utils/useAsyncRunner";
+import { assetCategoryDetailUiService } from "@/src/container";
 
 export function useAssetCategoryDetail(categoryId: number) {
   const [range, setRange] =

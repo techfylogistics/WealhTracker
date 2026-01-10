@@ -1,4 +1,4 @@
-import { useLogExport } from '@/ui/hooks/useLogExport'
+import { useLogExport } from '@/src/ui/hooks/useLogExport'
 import { Button, Alert } from 'react-native'
 
 export function SupportScreen() {

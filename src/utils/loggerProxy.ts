@@ -1,4 +1,4 @@
-import { logger } from '@/utils/logger'
+import { logger } from '@/src/utils/logger'
 // Proxy decides what to log
 
 type LogLevel = 'debug' | 'info' | 'warn' | 'error'

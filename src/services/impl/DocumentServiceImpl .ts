@@ -1,6 +1,6 @@
-import { DocumentRepository } from "@/domain/repositories/repositories-index";
-import { DocumentService } from "@/domain/services/services-index";
-import { ItemDocument } from '@/domain/models/models-index';
+import { DocumentRepository } from "@/src/domain/repositories/repositories-index";
+import { DocumentService } from "@/src/domain/services/services-index";
+import { ItemDocument } from '@/src/domain/models/models-index';
 export class DocumentServiceImpl implements DocumentService {
   constructor(
     private readonly documentRepo: DocumentRepository

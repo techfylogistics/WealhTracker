@@ -1,8 +1,8 @@
-import { XIRRbyScope } from "@/query-models/query-models-index";
-import { Category, Contact, Item, Transaction, ItemDocument } from "@/domain/models/models-index";
-import { TransactionGroup } from "@/types/TransactionGroup";
-import { MetadataType } from "@/types/MetadataType";
-import { ValuationFrequency } from "@/types/ValuationFrequency";
+import { Category, Contact, Item, Transaction, ItemDocument } from "@/src/domain/models/models-index";
+import { TransactionGroup } from "@/src/types/TransactionGroup";
+import { MetadataType } from "@/src/types/MetadataType";
+import { ValuationFrequency } from "@/src/types/ValuationFrequency";
+import { XIRRbyScope } from "@/src/query-models/XirrView";
 
 /* =========================================================
    CATEGORY & HIERARCHY

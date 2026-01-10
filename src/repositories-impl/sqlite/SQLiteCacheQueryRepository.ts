@@ -1,4 +1,4 @@
-import { XIRRbyScope } from '@//query-models/XirrView';
+import { XIRRbyScope } from '@/src/query-models/XirrView';
 import { CacheQueryRepository } from '../../domain/repositories/repositories-index';
 import { query } from '../../db/sqlite';
 

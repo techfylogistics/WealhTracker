@@ -1,6 +1,6 @@
-import { Contact } from "@/domain/models/models-index";
-import { ContactRepository } from "@/domain/repositories/repositories-index";
-import { ContactService } from "@/domain/services/services-index";
+import { Contact } from "@/src/domain/models/models-index";
+import { ContactRepository } from "@/src/domain/repositories/repositories-index";
+import { ContactService } from "@/src/domain/services/services-index";
 export class ContactServiceImpl implements ContactService {
   constructor(
     private readonly contactRepo: ContactRepository

@@ -2,8 +2,8 @@
    CRUD OPERATIONS ON CORE DOMAIN ENTITIES
    ========================================================= */
 
-import { FinancialSummary, NetWorth, CategoryNetWorth, XIRRbyScope, NetWorthSnapshot, NetWorthTrendPoint } from "@/query-models/query-models-index";
-import { Category, Item, Transaction, Contact, ItemDocument } from "@/domain/models/models-index";
+import { FinancialSummary, NetWorth, CategoryNetWorth, XIRRbyScope, NetWorthSnapshot, NetWorthTrendPoint } from "@/src/query-models/query-models-index";
+import { Category, Item, Transaction, Contact, ItemDocument } from "@/src/domain/models/models-index";
 
 /**
  * ItemService

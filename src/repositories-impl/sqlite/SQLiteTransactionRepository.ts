@@ -1,6 +1,6 @@
 import { TransactionRepository, } from '../../domain/repositories/repositories-index';
 import { query, execute } from '../../db/sqlite';
-import { Transaction } from '@/domain/models/models-index';
+import { Transaction } from '@/src/domain/models/models-index';
 
 export class SQLiteTransactionRepository implements TransactionRepository {
 

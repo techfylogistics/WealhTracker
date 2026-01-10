@@ -3,13 +3,13 @@ import {
   NetWorthTrendPoint,
   CategoryNetWorth,
   NetWorth
-} from '@/query-models/query-models-index';
+} from '@/src/query-models/query-models-index';
 import {
   TransactionQueryRepository,
   CacheQueryRepository,
   CategoryQueryRepository
 } from '../../domain/repositories/repositories-index';
-import { NetWorthService } from '@/domain/services/services-index';
+import { NetWorthService } from '@/src/domain/services/services-index';
 
 export class NetWorthServiceImpl
   implements NetWorthService {

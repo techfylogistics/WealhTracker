@@ -1,4 +1,4 @@
-import { TransactionGroup } from '@/types/TransactionGroup';
+import { TransactionGroup } from '@/src/types/TransactionGroup';
 import {
   TransactionQueryRepository,
 

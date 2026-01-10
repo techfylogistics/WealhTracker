@@ -1,6 +1,6 @@
-import { TransactionRepository } from "@/domain/repositories/repositories-index";
-import { TransactionSemanticService, TransactionService } from "@/domain/services/services-index";
-import { Transaction } from "@/domain/models/models-index";
+import { TransactionRepository } from "@/src/domain/repositories/repositories-index";
+import { TransactionSemanticService, TransactionService } from "@/src/domain/services/services-index";
+import { Transaction } from "@/src/domain/models/models-index";
 
 export class TransactionServiceImpl implements TransactionService {
   constructor(

@@ -3,16 +3,16 @@ import type {
     XirrQueryService,
     CategoryHierarchyService,
     TransactionService,
-} from "@/domain/services/services-index";
+} from "@/src/domain/services/services-index";
 
 import {
     DashboardViewModel,
     DonutSliceVM,
     CategoryCardVM,
     RecentTransactionVM,
-} from "@/ui/view-models/dashboard";
+} from "@/src/us/view-models/dashboard";
 
-// import { formatCurrency } from "@/ui/utils/formatters";
+// import { formatCurrency } from "@/src/us/utils/formatters";
 
 export class DashboardUiServiceImpl {
     constructor(

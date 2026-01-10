@@ -1,6 +1,6 @@
-import { xirrQueryService } from '@/container'
+import { xirrQueryService } from '@/src/container'
 import { useAsyncRunner } from '../utils/useAsyncRunner'
-import { ScopeType } from '@/types/ScopeType'
+import { ScopeType } from '@/src/types/ScopeType'
 // TODO these are not used so we may remove these later
 
 export function useXirr(scope: ScopeType, scopeId: number | null) {

@@ -2,12 +2,13 @@
 // CATEGORY
 // ================================
 
-import { CategoryNature } from "@/types/CategoryNature";
-import { ContactCategory } from "@/types/ContactCategory";
-import { MetadataType } from "@/types/MetadataType";
-import { ScopeType } from "@/types/ScopeType";
-// import { XirrScopeType } from "@/types/ScopeType";
-import { TransactionGroup } from "@/types/TransactionGroup";
+// import { CategoryNature } from "../src/motypes/CategoryNature";
+import { CategoryNature } from "@/src/types/CategoryNature";
+import { ContactCategory } from "@/src/types/ContactCategory";
+import { MetadataType } from "@/src/types/MetadataType";
+import { ScopeType } from "@/src/types/ScopeType";
+import { TransactionGroup } from "@/src/types/TransactionGroup";
+
 
 
 export interface Category {

@@ -1,6 +1,6 @@
-import { ItemRepository } from "@/domain/repositories/repositories-index";
-import { ItemService } from "@/domain/services/services-index";
-import { Item } from "@/domain/models/models-index";
+import { ItemRepository } from "@/src/domain/repositories/repositories-index";
+import { ItemService } from "@/src/domain/services/services-index";
+import { Item } from "@/src/domain/models/models-index";
 
 export class ItemServiceImpl implements ItemService {
   constructor(

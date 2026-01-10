@@ -48,8 +48,8 @@ import { TransactionSemanticServiceImpl } from './services/impl/TransactionSeman
 /* =========================================================
    UI SERVICE SINGLETONS
    ========================================================= */
-import { DashboardUiServiceImpl } from '@/ui/ui-services/DashboardUiService'
-import { AssetCategoryDetailUiServiceImpl } from '@/ui/ui-services/AssetCategoryDetailUiService'
+import { DashboardUiServiceImpl } from '../src/ui/ui-services/DashboardUiService'
+import { AssetCategoryDetailUiServiceImpl } from '../src/ui/ui-services/AssetCategoryDetailUiService'
 
 /* =========================================================
    REPOSITORY SINGLETONS
